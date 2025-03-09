@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PlexRecruitingWork-MatchingApp
 
 Rails の api モード、next.js をフロントにした以下の web アプリを作成したいです。
@@ -75,3 +76,29 @@ git checkout -b
 feature branch を作成 → 変更を加えたら、「feature」に「push」
 → 「feature」を「master」にマージしていいかどうかのリクエスト
 = pull request
+=======
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+>>>>>>> a5090c7 (make rails pj)
