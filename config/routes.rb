@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :recruitments
       resources :applications
       resources :messages
+      post "login", to: "sessions#create"
     end
   end
 
