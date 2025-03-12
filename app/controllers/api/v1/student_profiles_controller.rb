@@ -1,4 +1,4 @@
-class Api::V1::StudenProfilesController < ApplicationController
+class Api::V1::StudentProfilesController < ApplicationController
   def index
     @student_profiles = StudentProfile.all
     render json: @student_profiles

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :index, :show, :update, :destroy]
-      resources :student_profiles
-      resources :company_profiles
+      resources :student_profiles, only: [:create, :index, :show, :update, :destroy]
+      resources :company_profiles, only: [:create]
       resources :recruitments
       resources :applications
       resources :messages

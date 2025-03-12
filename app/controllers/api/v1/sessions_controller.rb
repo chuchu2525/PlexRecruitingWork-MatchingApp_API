@@ -1,10 +1,16 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    user = User.find_by(email: params[:email])
+    user = User.find_by(email: params[:email], role: params[:role])
     if user&.authenticate(params[:password])
-      render json: { token: generate_token(user) }, status: :ok
+      if user.role == 'student' && user.student_profile.nil?
+        render json: { user: user, token: generate_token(user), redirect_to: 'student_profile' }, status: :ok
+      elsif user.role == 'company' && user.company_profile.nil?
+        render json: { user: user, token: generate_token(user), redirect_to: 'company_profile' }, status: :ok
+      else
+        render json: { user: user, token: generate_token(user), redirect_to: 'index' }, status: :ok
+      end
     else
-      render json: { error: 'Invalid email or password' }, status: :unauthorized
+      render json: { error: 'Invalid email, password, or role' }, status: :unauthorized
     end
   end
 
