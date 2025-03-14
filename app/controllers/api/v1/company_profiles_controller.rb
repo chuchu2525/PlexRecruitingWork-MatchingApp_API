@@ -8,9 +8,20 @@ class Api::V1::CompanyProfilesController < ApplicationController
     end
   end
 
+  def index
+    @company_profiles = CompanyProfile.all
+    render json: @company_profiles.to_json(include: { user: {only: :name}})
+  end
+
+  def show
+    @company_profile = CompanyProfile.find(params[:id])
+    render json: @company_profile.to_json(include: { user: { only: :name } })
+  end
+
   private
 
   def company_profile_params
     params.require(:company_profile).permit(:user_id, :company_overview, :business_description, :job_description)
   end
+
 end

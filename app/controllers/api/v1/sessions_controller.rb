@@ -1,3 +1,4 @@
+require 'jwt'
 class Api::V1::SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email], role: params[:role])
@@ -18,5 +19,6 @@ class Api::V1::SessionsController < ApplicationController
 
   def generate_token(user)
     # JWTトークンを生成するロジックをここに追加
+    JWT.encode({ user_id: user.id }, Rails.application.credentials.secret_key_base)
   end
 end
