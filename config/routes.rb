@@ -5,8 +5,9 @@ Rails.application.routes.draw do
       resources :student_profiles, only: [:create, :index, :show, :update, :destroy]
       resources :company_profiles, only: [:create, :index, :show, :update, :destroy]
       resources :recruitments
-      resources :applications
+      resources :applications, only: [:create, :index]
       resources :messages
+      resources :rooms, only: [:index, :create]
       post "login", to: "sessions#create"
     end
   end
