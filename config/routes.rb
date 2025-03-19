@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       resources :recruitments
       resources :applications, only: [:create, :index]
       resources :messages
-      resources :rooms, only: [:index, :create]
+      resources :rooms, only: [:index, :create] do
+        resources :room_messages, only: [:index, :create]
+      end
       post "login", to: "sessions#create"
     end
   end
