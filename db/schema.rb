@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_15_150544) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_082053) do
   create_table "applications", force: :cascade do |t|
     t.integer "student_profile_id", null: false
     t.integer "recruitment_id", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_15_150544) do
     t.index ["company_profile_id"], name: "index_recruitments_on_company_profile_id"
   end
 
+  create_table "room_messages", force: :cascade do |t|
+    t.text "context"
+    t.string "sender_name"
+    t.integer "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_messages_on_room_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -82,5 +91,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_15_150544) do
   add_foreign_key "company_profiles", "users"
   add_foreign_key "messages", "applications"
   add_foreign_key "recruitments", "company_profiles"
+  add_foreign_key "room_messages", "rooms"
   add_foreign_key "student_profiles", "users"
 end
